@@ -28,7 +28,7 @@ class Voice(commands.Cog):
                 channel = await after.channel.guild.create_voice_channel(name=temptalkname, category=category)
                 if channel is not None:
                     await member.move_to(channel)
-                    await channel.set_permissions(member, manage_channels=True)
+                    await channel.set_permissions(member, manage_channels=True, mute_members=True, deafen_members=True, manage_permissions=True)
 
 
 def setup(client):
