@@ -14,14 +14,14 @@ class Voice(commands.Cog):
         with open('data/data.json') as file:
             data = json.load(file)
             cv = data[str(after.channel.guild.id)]['createvoicechannel']
-            temptalkcategory = data[str(after.channel.guild.id)]['temptalkcategory']
-            temptalkname = data[str(after.channel.guild.id)]['temptalkname']
+            temptalkcategory = data[str(member.guild.id)]['temptalkcategory']
+            temptalkname = data[str(member.guild.id)]['temptalkname']
 
         if(before.channel != None):
             if(before.channel.name == cv):
                 return
             if(before.channel.category.name == temptalkcategory):
-                if(before.channel.members == 0):
+                if(len(before.channel.members) == 0):
                     await before.channel.delete()
         if(after.channel != None):
             if(after.channel.name == cv):
