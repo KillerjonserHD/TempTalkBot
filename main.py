@@ -16,7 +16,7 @@ client = commands.Bot(command_prefix=prefix, intents=Intents.all())
 @client.event
 async def on_ready():
     print("Bot is now ready")
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="?help"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="-help"))
 
 @client.event
 async def on_command_error(ctx, error):

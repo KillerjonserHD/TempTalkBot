@@ -7,16 +7,15 @@ from discord.utils import get
 class Voice(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
+
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         with open('data/data.json') as file:
             data = json.load(file)
-            cv = data[str(after.channel.guild.id)]['createvoicechannel']
+            cv = data[str(member.guild.id)]['createvoicechannel']
             temptalkcategory = data[str(member.guild.id)]['temptalkcategory']
             temptalkname = data[str(member.guild.id)]['temptalkname']
-
         if(before.channel != None):
             if(before.channel.name == cv):
                 return
@@ -30,8 +29,6 @@ class Voice(commands.Cog):
                 if channel is not None:
                     await member.move_to(channel)
                     await channel.set_permissions(member, manage_channels=True)
-
-
 
 
 def setup(client):
